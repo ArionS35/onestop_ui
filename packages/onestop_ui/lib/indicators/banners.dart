@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:onestop_ui/index.dart';
 
-enum BannerType { warning, negative, positive, accent }
+enum BannerType { warning, negative, positive, accent, accent_no_icon }
 
 class OBanner extends StatelessWidget {
   final BannerType type;
   final String headline;
   final String paragraph;
-  final Widget myButton;
+  final Widget? myButton;
 
   const OBanner({
     required this.type,
-    required this.myButton,
-
+    this.myButton,
     required this.headline,
     required this.paragraph,
     super.key,
   });
 
-  IconData _getIcon() {
+  IconData? _getIcon() {
     switch (type) {
       case BannerType.warning:
       case BannerType.negative:
@@ -26,6 +25,8 @@ class OBanner extends StatelessWidget {
         return Icons.warning_amber_rounded;
       case BannerType.positive:
         return Icons.done_rounded;
+      case BannerType.accent_no_icon:
+        return null;
     }
   }
 
@@ -39,24 +40,27 @@ class OBanner extends StatelessWidget {
         return OColor.green100;
       case BannerType.accent:
         return OColor.blue100;
+      case BannerType.accent_no_icon:
+        return OColor.blue100;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(OSpacing.xs),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(OSpacing.xs),
         decoration: BoxDecoration(
           color: _getBackgroundColor(),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(OCornerRadius.s),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
+                if (_getIcon() != null)
                 SizedBox(
                   height: 32,
                   width: 32,
@@ -64,6 +68,7 @@ class OBanner extends StatelessWidget {
                     child: Icon(_getIcon(), size: 32, color: OColor.gray800),
                   ),
                 ),
+                if (_getIcon() != null)
                 const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,14 +76,12 @@ class OBanner extends StatelessWidget {
                     Text(
                       headline,
                       style: OTextStyle.headingSmall.copyWith(
-                        fontSize: 16,
                         color: OColor.gray800,
                       ),
                     ),
                     Text(
                       paragraph,
                       style: OTextStyle.bodyMedium.copyWith(
-                        fontSize: 16,
                         color: OColor.gray800,
                       ),
                     ),

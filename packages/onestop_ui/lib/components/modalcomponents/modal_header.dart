@@ -6,7 +6,8 @@ class OModalHeader extends StatelessWidget {
   final IconData? buttonIcon;
   final String? imageURl;
   final String heading;
-  final String subheading;
+  final String? subheading;
+  final Color? iconColor;
   final Function()? onPressed;
 
   const OModalHeader({
@@ -14,8 +15,9 @@ class OModalHeader extends StatelessWidget {
     this.icon,
     this.buttonIcon,
     this.imageURl,
+    this.iconColor,
     required this.heading,
-    required this.subheading,
+    this.subheading,
     this.onPressed,
   });
 
@@ -34,17 +36,13 @@ class OModalHeader extends StatelessWidget {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               if (icon != null)
-                Padding(
-                  padding: const EdgeInsets.all(OSpacing.xs),
-                  child: SizedBox(
-                    width: 32,
-                    height: 32,
-                    child: Icon(icon, size:32, color: OColor.gray600),
-                  ),
+                SizedBox(
+                  width: 32,
+                  height: 32,
+                  child: Icon(icon, size:32, color: iconColor),
                 ),
               if (imageURl != null)
                 Padding(
@@ -65,12 +63,13 @@ class OModalHeader extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     OText(
                       text: heading,
                       style: OTextStyle.labelLarge.copyWith(color: OColor.gray800),
                     ),
-                    SizedBox(width: OSpacing.xs),
+                    if(subheading != null)
                     OText(
                       text: subheading,
                       style: OTextStyle.bodySmall.copyWith(color: OColor.gray600),
