@@ -23,8 +23,8 @@ class OModalHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: OSpacing.s,
-        vertical: OSpacing.xxs,
+        horizontal: OSpacing.xs,
+        vertical: OSpacing.xs,
       ),
       color: Colors.transparent,
       child: Row(

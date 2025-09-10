@@ -42,7 +42,10 @@ export 'indicators/tag.dart';
 export 'list/list_export.dart';
 export 'store/theme_store.dart';
 
-// modal components
+// modals
 export 'components/modalcomponents/modal_header.dart';
 export 'components/modalcomponents/modal_banner.dart';
+
+export 'components/modals/food_outlet_modal.dart';
+export 'components/modals/basic_modal.dart';
 export 'widget_demo/modal_demo.dart';

@@ -10,6 +10,7 @@ class ModalDemo extends StatelessWidget {
     return SizedBox(
       child: Column(
         children: [
+          OModalBasic(),
           OModalHeader(
             heading: "Modal Heading",
             subheading: "Modal Subheading",
