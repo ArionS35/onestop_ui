@@ -31,7 +31,13 @@ class ModalDemo extends StatelessWidget {
             onPressed: () {},
             buttonIcon: TablerIcons.arrow_rotary_first_left,
           ),
-          OModalBanner(),
+          OModalBanner(
+            icon: TablerIcons.arrow_rotary_first_left,
+            body:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            heading: "Banner heading",
+            label: "label",
+          ),
         ],
       ),
     );

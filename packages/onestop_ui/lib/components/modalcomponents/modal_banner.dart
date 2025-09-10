@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:onestop_ui/index.dart';
 
 class OModalBanner extends StatelessWidget {
-  const OModalBanner({super.key});
+  final String heading;
+  final String label;
+  final String body;
+  final IconData? icon;
+
+  const OModalBanner({super.key,
+  required this.heading,
+  required this.body,
+  required this.icon,
+  required this.label,});
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +39,13 @@ class OModalBanner extends StatelessWidget {
                       child: SizedBox(
                         width: 24,
                         height: 24,
-                        child: Icon(TablerIcons.arrow_rotary_first_left, size:24, color: OColor.white),
+                        child: Icon(icon, size:24, color: OColor.white),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(OSpacing.xs),
                       child: OText(
-                        text: "Banner Heading",
+                        text: heading,
                         style: OTextStyle.labelSmall.copyWith(color: OColor.white),
                       ),
                     ),
@@ -51,7 +59,7 @@ class OModalBanner extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(OSpacing.xs),
                     child: OText(
-                      text: "LABEL",
+                      text: label.toUpperCase(),
                       style: OTextStyle.labelXSmall.copyWith(color: OColor.white),
                     ),
                   ),
@@ -61,7 +69,7 @@ class OModalBanner extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(OSpacing.xs ),
               child: OText(
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                text: body,
                 style: OTextStyle.bodyXSmall.copyWith(color: OColor.white),
               ),
             ),
