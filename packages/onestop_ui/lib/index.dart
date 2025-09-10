@@ -45,5 +45,4 @@ export 'store/theme_store.dart';
 // modal components
 export 'components/modalcomponents/modal_header.dart';
 export 'components/modalcomponents/modal_banner.dart';
-export 'components/modalcomponents/modal_image_group.dart';
 export 'widget_demo/modal_demo.dart';

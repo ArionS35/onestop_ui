@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:onestop_ui/components/modalcomponents/modal_header.dart';
+import 'package:onestop_ui/index.dart';
 
 class ModalDemo extends StatelessWidget {
   const ModalDemo({super.key});
@@ -31,6 +31,7 @@ class ModalDemo extends StatelessWidget {
             onPressed: () {},
             buttonIcon: TablerIcons.arrow_rotary_first_left,
           ),
+          OModalBanner(),
         ],
       ),
     );

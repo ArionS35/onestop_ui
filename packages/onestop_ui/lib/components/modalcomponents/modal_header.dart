@@ -38,10 +38,13 @@ class OModalHeader extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               if (icon != null)
-                SizedBox(
-                  width: 32,
-                  height: 32,
-                  child: Icon(icon, size:32, color: OColor.gray600),
+                Padding(
+                  padding: const EdgeInsets.all(OSpacing.xs),
+                  child: SizedBox(
+                    width: 32,
+                    height: 32,
+                    child: Icon(icon, size:32, color: OColor.gray600),
+                  ),
                 ),
               if (imageURl != null)
                 Padding(
