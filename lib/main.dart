@@ -83,6 +83,8 @@ class _MyAppState extends State<MyApp> {
                     OText(text: 'This is a sample text', style: OTextStyle.bodyMedium),
                     OText(text: 'Enjoy building your app!', style: OTextStyle.bodySmall),
                     const SizedBox(height: 20),
+                    ModalDemo(),
+                    const SizedBox(height: 20),
                     CardsDemo(),
                     const SizedBox(height: 20),
                     TextfieldsDemo(),
