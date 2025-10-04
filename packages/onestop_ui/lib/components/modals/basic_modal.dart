@@ -184,10 +184,11 @@ class OModalSecondary extends StatelessWidget {
                 ),
               ),
             if (bannerHeading != null)
-              OBanner(
-                type: BannerType.accent_no_icon,
-                headline: bannerHeading!,
-                paragraph: bannerBody!,
+              OModalBanner(
+                heading: bannerHeading!,
+                body: bannerBody!,
+                color: OColor.blue100,
+                textColor: OColor.gray800,
               ),
             if (userPhone != null)
               Padding(
@@ -213,26 +214,26 @@ class OModalSecondary extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   if (buttonLabel1 != null)
-                  SecondaryButton(
-                    label: buttonLabel1!,
-                    onPressed: buttonPressed1!,
-                    leadingIcon: buttonIcon1,
-                    iconColor: OColor.green600,
-                  ),
+                    SecondaryButton(
+                      label: buttonLabel1!,
+                      onPressed: buttonPressed1!,
+                      leadingIcon: buttonIcon1,
+                      iconColor: OColor.green600,
+                    ),
                   if (buttonLabel2 != null)
-                  SecondaryButton(
-                    label: buttonLabel2!,
-                    onPressed: buttonPressed2,
-                    leadingIcon: buttonIcon2,
-                    iconColor: OColor.green600,
-                  ),
+                    SecondaryButton(
+                      label: buttonLabel2!,
+                      onPressed: buttonPressed2,
+                      leadingIcon: buttonIcon2,
+                      iconColor: OColor.green600,
+                    ),
                   if (buttonLabel3 != null)
-                  SecondaryButton(
-                    label: buttonLabel3!,
-                    onPressed: buttonPressed3,
-                    leadingIcon: buttonIcon3,
-                    iconColor: OColor.green600,
-                  ),
+                    SecondaryButton(
+                      label: buttonLabel3!,
+                      onPressed: buttonPressed3,
+                      leadingIcon: buttonIcon3,
+                      iconColor: OColor.green600,
+                    ),
                 ],
               ),
             ),
@@ -242,16 +243,16 @@ class OModalSecondary extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   if (buttonLabel4 != null)
-                  SecondaryButton(
-                    label: buttonLabel4!,
-                    onPressed: buttonPressed4,
-                    leadingIcon: buttonIcon4,
-                  ),
+                    SecondaryButton(
+                      label: buttonLabel4!,
+                      onPressed: buttonPressed4,
+                      leadingIcon: buttonIcon4,
+                    ),
                   if (buttonLabel5 != null)
-                  PrimaryButton(
-                    label: buttonLabel5!,
-                    onPressed: buttonPressed5,
-                  ),
+                    PrimaryButton(
+                      label: buttonLabel5!,
+                      onPressed: buttonPressed5,
+                    ),
                 ],
               ),
             ),
