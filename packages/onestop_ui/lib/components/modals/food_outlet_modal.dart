@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:onestop_ui/index.dart';
 
-class OFoodModal extends StatelessWidget {
+class OFoodModal extends StatefulWidget {
   final String heading;
   final String subheading;
   final String body;
@@ -51,8 +51,19 @@ class OFoodModal extends StatelessWidget {
     this.bannerLabel,
     this.bannerIcon,
     this.bannerTextColor,
-    this.bannerColor, required this.dataMap,
+    this.bannerColor,
+    required this.dataMap,
   });
+
+  @override
+  State<OFoodModal> createState() => _OFoodModalState();
+}
+
+class _OFoodModalState extends State<OFoodModal> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,25 +81,25 @@ class OFoodModal extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             OModalHeader(
-              heading: heading,
-              subheading: subheading,
-              onPressed: headerButtonPressed,
-              imageURl: modalImageURl,
-              buttonIcon: headerButtonIcon,
+              heading: widget.heading,
+              subheading: widget.subheading,
+              onPressed: widget.headerButtonPressed,
+              imageURl: widget.modalImageURl,
+              buttonIcon: widget.headerButtonIcon,
             ),
             Padding(
               padding: const EdgeInsets.only(left: OSpacing.xxs),
               child: OCardLabels(
-                label: subLabel1!,
-                icon: subLabelIcon1!,
+                label: widget.subLabel1!,
+                icon: widget.subLabelIcon1!,
                 color: OColor.gray600,
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: OSpacing.xxs),
               child: OCardLabels(
-                label: subLabel2!,
-                icon: subLabelIcon2!,
+                label: widget.subLabel2!,
+                icon: widget.subLabelIcon2!,
                 color: OColor.gray600,
               ),
             ),
@@ -98,17 +109,17 @@ class OFoodModal extends StatelessWidget {
                 vertical: OSpacing.xs,
               ),
               child: OText(
-                text: body,
+                text: widget.body,
                 style: OTextStyle.bodySmall.copyWith(color: OColor.gray800),
               ),
             ),
             OModalBanner(
-              heading: bannerHeading!,
-              body: bannerBody!,
-              icon: bannerIcon,
-              color: bannerColor,
-              textColor: bannerTextColor,
-              label: bannerLabel,
+              heading: widget.bannerHeading!,
+              body: widget.bannerBody!,
+              icon: widget.bannerIcon,
+              color: widget.bannerColor,
+              textColor: widget.bannerTextColor,
+              label: widget.bannerLabel,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -118,18 +129,18 @@ class OFoodModal extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (buttonLabel1 != null)
+                  if (widget.buttonLabel1 != null)
                     SecondaryButton(
-                      label: buttonLabel1!,
-                      onPressed: buttonPressed1,
-                      leadingIcon: buttonIcon1,
+                      label: widget.buttonLabel1!,
+                      onPressed: widget.buttonPressed1,
+                      leadingIcon: widget.buttonIcon1,
                       iconColor: OColor.green600,
                     ),
-                  if (buttonLabel2 != null)
+                  if (widget.buttonLabel2 != null)
                     SecondaryButton(
-                      label: buttonLabel2!,
-                      onPressed: buttonPressed2,
-                      leadingIcon: buttonIcon2,
+                      label: widget.buttonLabel2!,
+                      onPressed: widget.buttonPressed2,
+                      leadingIcon: widget.buttonIcon2,
                       iconColor: OColor.green600,
                     ),
                 ],
@@ -154,7 +165,7 @@ class OFoodModal extends StatelessWidget {
                 height: 200,
                 child: GridView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: dataMap.length,
+                  itemCount: widget.dataMap.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 1.0,
@@ -162,10 +173,10 @@ class OFoodModal extends StatelessWidget {
                     crossAxisSpacing: OSpacing.s,
                   ),
                   itemBuilder: (context, index) {
-                    final imageUrl = dataMap.keys.elementAt(index);
-                    final onTap = dataMap.values.elementAt(index);
+                    final imageUrl = widget.dataMap.keys.elementAt(index);
+                    final onTap = widget.dataMap.values.elementAt(index);
                     return GestureDetector(
-                      onTap: ()=> onTap,
+                      onTap: () => onTap,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(OCornerRadius.s),
@@ -184,5 +195,10 @@ class OFoodModal extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
