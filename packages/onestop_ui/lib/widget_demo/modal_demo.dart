@@ -10,6 +10,44 @@ class ModalDemo extends StatelessWidget {
     return SizedBox(
       child: Column(
         children: [
+          OFoodModal(
+            dataMap: {
+              // this is the map of data which has to be mapped into the menu of OFoodModal
+              'https://picsum.photos/id/1/200/300': () {},
+              'https://picsum.photos/id/2/200/300': () {},
+              'https://picsum.photos/id/3/200/300': () {},
+              'https://picsum.photos/id/4/200/300': () {},
+              'https://picsum.photos/id/5/200/300': () {},
+              'https://picsum.photos/id/6/200/300': () {},
+              'https://picsum.photos/id/7/200/300': () {},
+            },
+            bannerHeading: "Banner Heading",
+            bannerColor: OColor.blue500,
+            bannerIcon: TablerIcons.arrow_rotary_first_left,
+            bannerLabel: "label",
+            bannerTextColor: OColor.white,
+            bannerBody:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+            subLabel1: "Sub Label text",
+            subLabel2: "Sub Label text",
+            subLabelIcon1: TablerIcons.arrow_rotary_first_left,
+            subLabelIcon2: TablerIcons.arrow_rotary_first_left,
+            buttonIcon1: TablerIcons.arrow_rotary_first_left,
+            buttonIcon2: TablerIcons.arrow_rotary_first_left,
+            buttonLabel1: "Label 1",
+            buttonLabel2: "Label 2",
+            buttonPressed1: () {},
+            buttonPressed2: () {},
+            headerButtonIcon: TablerIcons.arrow_rotary_first_left,
+            headerButtonPressed: () {},
+            headerIcon: TablerIcons.arrow_rotary_first_left,
+            modalImageURl:
+                "https://variety.com/wp-content/uploads/2019/10/shutterstock_editorial_10435445et.jpg?w=1000&h=667&crop=1",
+            heading: "Modal Heading",
+            subheading: "Modal subheading",
+            body:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+          ),
           OModalBasic(
             buttonIcon1: TablerIcons.arrow_rotary_first_left,
             buttonIcon2: TablerIcons.arrow_rotary_first_left,
