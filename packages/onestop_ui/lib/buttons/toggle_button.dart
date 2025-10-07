@@ -122,14 +122,12 @@ class ToggleButton extends StatelessWidget {
               if (labelText != null) ...[
                 Text(
                   labelText!,
-                  //TODO add textstyle
                   style: labelStyle ?? TextStyle(),
                 ),
               ],
               if (subLabelText != null) ...[
                 Text(
                   subLabelText!,
-                  //TODO add textstyle
                   style: subLabelStyle ?? TextStyle(),
                 ),
               ],
