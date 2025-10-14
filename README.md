@@ -10,7 +10,7 @@ currently following components are ready for being used and pushed to dev branch
 - List Tiles
 - Text fields - OTextField , OSearchBar
 - Buttons - PrimaryButton, SecondaryButton, TertiaryButton, CircularButton, RadioButton, IconButton, ToggleButton
-- Cards - OHomeCard (small), OMessMenuCard, FoodOutletCard, OCabSharingCard, OEventCard ,OProductListingCard ,OProductRequestCard ,OLostFoundCard,OHomeCardLarge
+- Cards - OHomeCard (small), OMessMenuCard, FoodOutletCard, OCabSharingCard, OEventCard, OProductListingCard, OProductRequestCard, OLostFoundCard, OHomeCardLarge, OModalBasic, OFoodModal, OModalSecondary
 
 ## Additional Info
 - Please go through the repo first and always refer dev branch for latest updates.
@@ -22,6 +22,12 @@ currently following components are ready for being used and pushed to dev branch
 If you experience any issue in this repo or require some other component please raise an issue or contact us we will try to address it as soon as possible.
 
 ## Screenshots
+
+
+![Screenshot_20251007_015939](https://github.com/user-attachments/assets/e29d3e41-846b-4457-af30-fbb8e7ff919f)
+![Screenshot_20251007_015854](https://github.com/user-attachments/assets/6c3abf62-1d42-4a62-81f9-e716c87aede8)
+![Screenshot_20251007_015918](https://github.com/user-attachments/assets/8427f78f-1919-4ede-bdd5-ed9beec5bd50)
+
 
 ![Screenshot_20250625_233046](https://github.com/user-attachments/assets/e9fa36fa-9a91-4c24-9e64-07537c1e7190)
 ![Screenshot_20250625_233128](https://github.com/user-attachments/assets/e99ed7a1-ad65-469c-93d9-1e4e95bb616e)
