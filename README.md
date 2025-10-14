@@ -24,9 +24,9 @@ If you experience any issue in this repo or require some other component please 
 ## Screenshots
 
 
-<img width="540" height="1200" alt="Screenshot_20251007_015939" src="https://github.com/user-attachments/assets/e29d3e41-846b-4457-af30-fbb8e7ff919f" />
-<img width="540" height="1200" alt="Screenshot_20251007_015854" src="https://github.com/user-attachments/assets/6c3abf62-1d42-4a62-81f9-e716c87aede8" />
-<img width="540" height="1200" alt="Screenshot_20251007_015918" src="https://github.com/user-attachments/assets/8427f78f-1919-4ede-bdd5-ed9beec5bd50" />
+![Screenshot_20251007_015939](https://github.com/user-attachments/assets/e29d3e41-846b-4457-af30-fbb8e7ff919f)
+![Screenshot_20251007_015854](https://github.com/user-attachments/assets/6c3abf62-1d42-4a62-81f9-e716c87aede8)
+![Screenshot_20251007_015918](https://github.com/user-attachments/assets/8427f78f-1919-4ede-bdd5-ed9beec5bd50)
 
 
 ![Screenshot_20250625_233046](https://github.com/user-attachments/assets/e9fa36fa-9a91-4c24-9e64-07537c1e7190)
