@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onestop_ui/index.dart';
+import 'package:onestop_ui/widget_demo/image_gallery.dart';
+import 'package:onestop_ui/widget_demo/image_preview.dart';
+import 'package:onestop_ui/widget_demo/image_selector.dart';
 import 'package:onestop_ui/widget_demo/indicators_demo.dart';
 import 'package:onestop_ui/widget_demo/buttons_demo.dart';
 import 'package:onestop_ui/widget_demo/list_demo.dart';
@@ -37,10 +40,13 @@ class _MyAppState extends State<MyApp> {
   void _onThemeChanged() {
     setState(() {});
   }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final List<String> demoImages = [
+      'https://picsum.photos/400/200?image=1',
+      'https://picsum.photos/400/200?image=2',
+      'https://picsum.photos/400/200?image=3',
+    ];
     return MaterialApp(
       title: 'OneStop UI Demo',
       debugShowCheckedModeBanner: false,
@@ -55,7 +61,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: themeStore.backgroundColor,
         appBar: AppBar(
-          title: Text('OneStop UI Demo'),
+          title: OText(text: 'OneStop UI Demo', style: OTextStyle.headingLarge),
           backgroundColor: themeStore.surfaceColor,
           foregroundColor: themeStore.textColor,
           actions: [
@@ -82,6 +88,85 @@ class _MyAppState extends State<MyApp> {
                     OText(text: 'Welcome to OneStop UI', style: OTextStyle.headingLarge),
                     OText(text: 'This is a sample text', style: OTextStyle.bodyMedium),
                     OText(text: 'Enjoy building your app!', style: OTextStyle.bodySmall),
+                    SingleImageGallery(
+                      imageUrl: 'https://picsum.photos/400/200?image=1',
+                      previewType: ImagePreviewType.circle, // only used on click
+                    ),
+                    SizedBox(height: 20),
+                    OnestopLargeImageGallery(
+                      imageUrls: demoImages,
+                      previewType: ImagePreviewType.square,
+                    ),
+                    Divider(),
+                    OnestopMediumImageGallery(
+                      imageUrls: demoImages,
+                      previewType: ImagePreviewType.rectangle,
+                    ),
+                    OnestopMediumImageGallery(
+                      imageUrls: demoImages,
+                      previewType: ImagePreviewType.rectangle,
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 8,
+                        children: [
+                          // SizedBox(width: 20,),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          // SizedBox(width: 20,),
+                        ]
+                    ),
+                    SizedBox(height: 8,),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 8,
+                        children: [
+                          // SizedBox(width: 20,),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          ImageSelector(
+                            imageUrl: 'https://picsum.photos/400/200?image=6',
+                            // size: 40,
+                          ),
+                          // SizedBox(width: 20,),
+                        ]
+                    ),
+                    Divider(),
+                    // SingleImageGallery(
+                    //   imageUrl: 'https://picsum.photos/400/200?image=1',
+                    // ),
                     const SizedBox(height: 20),
                     ModalDemo(),
                     const SizedBox(height: 20),
