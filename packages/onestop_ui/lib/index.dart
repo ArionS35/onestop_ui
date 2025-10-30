@@ -51,4 +51,7 @@ export 'components/modals/basic_modal.dart';
 export 'widget_demo/modal_demo.dart';
 
 //images
+import 'package:onestop_ui/components/images/image_gallery.dart';
+import 'package:onestop_ui/components/images/image_preview.dart';
+import 'package:onestop_ui/components/images/image_selector.dart';
 export 'widget_demo/image_demo.dart';
