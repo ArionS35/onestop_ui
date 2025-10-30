@@ -27,6 +27,7 @@ export 'components/cards/cab_sharing.dart';
 export 'components/cards/events_card.dart';
 export 'components/cards/lost_n_found.dart';
 export 'components/cards/buy_n_sell.dart';
+export 'components/cards/events_listing_cards.dart';
 export 'widget_demo/cards_demo.dart';
 
 export 'buttons/button_exports.dart';

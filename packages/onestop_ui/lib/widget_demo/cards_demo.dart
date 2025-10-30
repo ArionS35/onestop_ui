@@ -10,6 +10,78 @@ class CardsDemo extends StatelessWidget {
     return SizedBox(
       child: Column(
         children: [
+          OEventListingCard.pastAdmin(
+            title: "Flutter Workshop",
+            date: "Nov 1, 2025",
+            size: EventCardSize.large,
+            onTap: () {},
+          ),
+          OEventListingCard.pastAdmin(
+            title: "Flutter Workshop",
+            date: "Nov 1, 2025",
+            size: EventCardSize.medium,
+           isDisabled: true,
+          ),
+          OEventListingCard.pastAdmin(
+            title: "Flutter Workshop",
+            date: "Nov 1, 2025",
+            size: EventCardSize.small,
+            onTap: () => {},
+          ),
+          OEventListingCard.pastUser(
+            title: "Sports Day",
+            date: "Oct 15, 2025",
+            size: EventCardSize.large,
+            isDisabled: true,
+          ),
+          OEventListingCard.pastUser(
+            title: "Sports Day",
+            date: "Oct 15, 2025",
+            size: EventCardSize.medium,
+            onTap: (){},
+          ),
+          OEventListingCard.pastUser(
+            title: "Sports Day",
+            date: "Oct 15, 2025",
+            size: EventCardSize.small,
+            onTap: (){},
+          ),
+          OEventListingCard.upcomingAdmin(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.large,
+            isDisabled: true,
+          ),
+          OEventListingCard.upcomingAdmin(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.medium,
+            onTap: () {},
+          ),
+          OEventListingCard.upcomingAdmin(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.small,
+            onTap: () {},
+          ),
+          OEventListingCard.upcomingUser(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.large,
+            onTap: () {},
+          ),
+          OEventListingCard.upcomingUser(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.medium,
+            isDisabled: true,
+          ),
+          OEventListingCard.upcomingUser(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.small,
+            onTap: () {},
+          ),
           OHomeCardLarge(
             dataMap: {
               // this is the map of data which has to be mapped into the blocks of main home card
@@ -44,7 +116,7 @@ class CardsDemo extends StatelessWidget {
             message:
                 () {}, // triggers the message button when editing mode is off
             phone: () {}, // triggers the phone button when editing mode is off
-             userImageURl: // Image of user who posted the ad
+            userImageURl: // Image of user who posted the ad
                 "https://variety.com/wp-content/uploads/2019/10/shutterstock_editorial_10435445et.jpg?w=1000&h=667&crop=1",
             userName: "John Doe",
             onArrowPressed: () {},

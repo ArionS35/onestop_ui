@@ -57,7 +57,7 @@ class _OEventCardState extends State<OEventCard> {
                 (_) =>
                     widget.isEnabled
                         ? setState(() => _isPressed = true)
-                        : null, //engage behaviour when search bar is tapped
+                        : null, //engage behaviour when card is tapped
             onTapUp: (_) {
               setState(() => _isPressed = false);
             },
