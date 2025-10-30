@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:onestop_ui/index.dart';
-// import 'package:onestop_ui/widget_demo/image_gallery.dart';
-// import 'package:onestop_ui/widget_demo/image_preview.dart';
-// import 'package:onestop_ui/widget_demo/image_selector.dart';
-import 'package:onestop_ui/components/images/image_gallery.dart';
-import 'package:onestop_ui/components/images/image_preview.dart';
-import 'package:onestop_ui/components/images/image_selector.dart';
-import 'package:onestop_ui/widget_demo/indicators_demo.dart';
-import 'package:onestop_ui/widget_demo/buttons_demo.dart';
-import 'package:onestop_ui/widget_demo/list_demo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
