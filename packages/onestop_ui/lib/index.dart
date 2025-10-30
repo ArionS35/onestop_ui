@@ -36,6 +36,7 @@ export 'indicators/badge.dart';
 export 'indicators/banners.dart';
 export 'indicators/profile.dart';
 export 'indicators/progress.dart';
+export 'indicators/snackbar.dart';
 export 'indicators/tag.dart';
 export 'widget_demo/indicators_demo.dart';
 export 'widget_demo/buttons_demo.dart';
