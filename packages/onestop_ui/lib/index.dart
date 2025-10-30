@@ -49,7 +49,5 @@ export 'components/modalcomponents/modal_banner.dart';
 export 'components/modals/food_outlet_modal.dart';
 export 'components/modals/basic_modal.dart';
 export 'widget_demo/modal_demo.dart';
-export 'widget_demo/calendar.dart';
-export 'widget_demo/full_date.dart';
-export 'widget_demo/date.dart';
+export 'widget_demo/dates.dart';
 export 'widget_demo/time.dart';

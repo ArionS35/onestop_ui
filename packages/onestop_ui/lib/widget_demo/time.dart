@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:onestop_ui/constants/spacing.dart';
+import '../utils/colors.dart';
+import '../utils/styles.dart';
 
 class ClockTime extends StatefulWidget {
   const ClockTime({super.key});
@@ -8,35 +11,81 @@ class ClockTime extends StatefulWidget {
 }
 
 class _ClockTimeState extends State<ClockTime> {
-  int hour = 9;
-  int minute = 13;
-  String period = 'PM';
 
-  void _increaseHour() => setState(() => hour = (hour % 12) + 1);
-  void _decreaseHour() => setState(() => hour = (hour - 1) < 1 ? 12 : hour - 1);
+late int hour;
+late int minute;
+late String period;
 
-  void _increaseMinute() => setState(() => minute = (minute + 1) % 60);
-  void _decreaseMinute() => setState(() => minute = (minute - 1) < 0 ? 59 : minute - 1);
+late int selectedHour;
+late int selectedMinute;
+late String selectedPeriod;
 
-  void _togglePeriod() => setState(() => period = period == 'AM' ? 'PM' : 'AM');
+
+
+@override
+void initState() {
+  super.initState();
+  final now = DateTime.now();
+  hour = now.hour % 12 == 0 ? 12 : now.hour % 12;
+  minute = now.minute;
+  period = now.hour >= 12 ? 'PM' : 'AM';
+
+  selectedHour = hour;
+  selectedMinute = minute;
+  selectedPeriod = period;
+}
+
+
+void _updateSelected() {
+  selectedHour = hour;
+  selectedMinute = minute;
+  selectedPeriod = period;
+}
+
+  void _increaseHour() {
+  setState(() {
+    hour = (hour % 12) + 1;
+    _updateSelected();
+  });
+}
+
+void _decreaseHour() {
+  setState(() {
+    hour = (hour - 1) < 1 ? 12 : hour - 1;
+    _updateSelected();
+  });
+}
+
+void _increaseMinute() {
+  setState(() {
+    minute = (minute + 1) % 60;
+    _updateSelected();
+  });
+}
+
+void _decreaseMinute() {
+  setState(() {
+    minute = (minute - 1) < 0 ? 59 : minute - 1;
+    _updateSelected();
+  });
+}
+
+void _togglePeriod() {
+  setState(() {
+    period = period == 'AM' ? 'PM' : 'AM';
+    _updateSelected();
+  });
+}
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isLight = theme.brightness == Brightness.light;
-
-    final bgColor = isLight ? Colors.white : theme.scaffoldBackgroundColor;
-    final textColor = isLight ? Color(0xFF232329) : Colors.white;
-    final fadedColor = isLight ? Color(0xFFBABABF) : Color(0xFF6E6F77);
-
-    final mainStyle = TextStyle(fontSize: 36, fontWeight: FontWeight.w500, color: textColor);
-    final fadedStyle = TextStyle(fontSize: 20, color: fadedColor);
+   final mainStyle = OTextStyle.headingLarge.copyWith(color: OColor.gray800);
+    final fadedStyle = OTextStyle.labelMedium.copyWith(color:  OColor.gray400);
 
     const hourWidth = 50.0;
     const minuteWidth = 50.0;
-    const periodWidth = 65.0; // increased to prevent wrapping
+    const periodWidth = 65.0; 
 
-    // Previous and next values
     int prevHour = (hour - 1) < 1 ? 12 : hour - 1;
     int nextHour = (hour % 12) + 1;
 
@@ -47,52 +96,47 @@ class _ClockTimeState extends State<ClockTime> {
     String belowPeriod = period == 'AM' ? 'PM' : '';
 
     return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0, 2))],
-      ),
+      padding: const EdgeInsets.all(OSpacing.m),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Row 1: Up arrows
+        
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 width: hourWidth,
                 child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_up),
+                  icon: Icon(Icons.keyboard_arrow_up, color: OColor.gray600,),
                   onPressed: _increaseHour,
                   padding: EdgeInsets.zero,
-                  constraints: BoxConstraints(),
+                  visualDensity: VisualDensity.compact,
                 ),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: minuteWidth,
                 child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_up),
+                  icon: Icon(Icons.keyboard_arrow_up, color: OColor.gray600,),
                   onPressed: _increaseMinute,
                   padding: EdgeInsets.zero,
-                  constraints: BoxConstraints(),
+                 visualDensity: VisualDensity.compact,
                 ),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: periodWidth,
                 child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_up),
+                  icon: Icon(Icons.keyboard_arrow_up, color: OColor.gray600,),
                   onPressed: _togglePeriod,
                   padding: EdgeInsets.zero,
-                  constraints: BoxConstraints(),
+                 visualDensity: VisualDensity.compact,
                 ),
               ),
             ],
           ),
 
-          // Row 2: Previous values
+         
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -100,12 +144,12 @@ class _ClockTimeState extends State<ClockTime> {
                 width: hourWidth,
                 child: Text(prevHour.toString().padLeft(2, '0'), style: fadedStyle, textAlign: TextAlign.center),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: minuteWidth,
                 child: Text(prevMinute.toString().padLeft(2, '0'), style: fadedStyle, textAlign: TextAlign.center),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: periodWidth,
                 child: abovePeriod.isNotEmpty
@@ -115,30 +159,29 @@ class _ClockTimeState extends State<ClockTime> {
             ],
           ),
 
-          // Row 3: Selected values
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 width: hourWidth,
-                child: Text(hour.toString().padLeft(2, '0'), style: mainStyle, textAlign: TextAlign.center),
+                child: Text(selectedHour.toString().padLeft(2, '0'), style: mainStyle, textAlign: TextAlign.center),
               ),
-              SizedBox(width: 4),
+              SizedBox(width: OSpacing.xxs),
               Text(':', style: mainStyle),
-              SizedBox(width: 4),
+              SizedBox(width: OSpacing.xxs),
               SizedBox(
                 width: minuteWidth,
-                child: Text(minute.toString().padLeft(2, '0'), style: mainStyle, textAlign: TextAlign.center),
+                child: Text(selectedMinute.toString().padLeft(2, '0'), style: mainStyle, textAlign: TextAlign.center),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: periodWidth,
-                child: Text(period, style: mainStyle, textAlign: TextAlign.center, softWrap: false),
+                child: Text(selectedPeriod, style: mainStyle, textAlign: TextAlign.center, softWrap: false),
               ),
             ],
           ),
 
-          // Row 4: Next values
+          
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -146,12 +189,12 @@ class _ClockTimeState extends State<ClockTime> {
                 width: hourWidth,
                 child: Text(nextHour.toString().padLeft(2, '0'), style: fadedStyle, textAlign: TextAlign.center),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: minuteWidth,
                 child: Text(nextMinute.toString().padLeft(2, '0'), style: fadedStyle, textAlign: TextAlign.center),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: periodWidth,
                 child: belowPeriod.isNotEmpty
@@ -161,37 +204,37 @@ class _ClockTimeState extends State<ClockTime> {
             ],
           ),
 
-          // Row 5: Down arrows
+         
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 width: hourWidth,
                 child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: Icon(Icons.keyboard_arrow_down, color: OColor.gray600,),
                   onPressed: _decreaseHour,
                   padding: EdgeInsets.zero,
-                  constraints: BoxConstraints(),
+                 visualDensity: VisualDensity.compact,
                 ),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: minuteWidth,
                 child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: Icon(Icons.keyboard_arrow_down, color: OColor.gray600,),
                   onPressed: _decreaseMinute,
                   padding: EdgeInsets.zero,
-                  constraints: BoxConstraints(),
+                 visualDensity: VisualDensity.compact,
                 ),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: OSpacing.xs),
               SizedBox(
                 width: periodWidth,
                 child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: Icon(Icons.keyboard_arrow_down, color: OColor.gray600,),
                   onPressed: _togglePeriod,
                   padding: EdgeInsets.zero,
-                  constraints: BoxConstraints(),
+                 visualDensity: VisualDensity.compact,
                 ),
               ),
             ],
