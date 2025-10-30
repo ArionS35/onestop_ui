@@ -94,7 +94,7 @@ class OEventListingCard extends StatefulWidget {
 
 class _OEventListingCardState extends State<OEventListingCard> {
   bool _isPressed = false;
-  bool _isSaved = true;
+  bool _isSaved = false;
 
   @override
   void initState() {
@@ -162,7 +162,8 @@ class _OEventListingCardState extends State<OEventListingCard> {
                     OText(
                       text: "Event Title",
                       style: OTextStyle.bodyMedium.copyWith(
-                        color: OColor.gray800,
+                        color:
+                            widget.isDisabled ? OColor.gray600 : OColor.gray800,
                       ),
                     ),
                     if (_isSaved == true)
@@ -171,13 +172,19 @@ class _OEventListingCardState extends State<OEventListingCard> {
                           Icon(
                             TablerIcons.check,
                             size: 16,
-                            color: OColor.green600,
+                            color:
+                                widget.isDisabled
+                                    ? OColor.gray400
+                                    : OColor.green600,
                           ),
                           const SizedBox(width: OSpacing.xxs),
                           OText(
                             text: "I'm going",
                             style: OTextStyle.labelXSmall.copyWith(
-                              color: OColor.green600,
+                              color:
+                                  widget.isDisabled
+                                      ? OColor.gray400
+                                      : OColor.green600,
                             ),
                           ),
                         ],
@@ -185,7 +192,8 @@ class _OEventListingCardState extends State<OEventListingCard> {
                     OText(
                       text: "Time," + "Location",
                       style: OTextStyle.bodySmall.copyWith(
-                        color: OColor.gray600,
+                        color:
+                            widget.isDisabled ? OColor.gray400 : OColor.gray600,
                       ),
                     ),
                     Row(
@@ -203,7 +211,10 @@ class _OEventListingCardState extends State<OEventListingCard> {
                             child: OText(
                               text: "TAg1",
                               style: OTextStyle.labelXSmall.copyWith(
-                                color: OColor.blue600,
+                                color:
+                                    widget.isDisabled
+                                        ? OColor.gray400
+                                        : OColor.blue600,
                               ),
                             ),
                           ),
@@ -222,7 +233,10 @@ class _OEventListingCardState extends State<OEventListingCard> {
                             child: OText(
                               text: "TAg2",
                               style: OTextStyle.labelXSmall.copyWith(
-                                color: OColor.green600,
+                                color:
+                                    widget.isDisabled
+                                        ? OColor.gray400
+                                        : OColor.green600,
                               ),
                             ),
                           ),
@@ -235,7 +249,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
             ),
             Icon(
               TablerIcons.chevron_right,
-              color: widget.isDisabled ? OColor.gray300 : OColor.gray600,
+              color: widget.isDisabled ? OColor.gray400 : OColor.gray600,
               size: 24,
             ),
           ],
@@ -246,6 +260,8 @@ class _OEventListingCardState extends State<OEventListingCard> {
       return Column(
         children: [
           Container(
+            width: 210,
+            height: 118,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(OCornerRadius.s),
@@ -261,6 +277,78 @@ class _OEventListingCardState extends State<OEventListingCard> {
               ),
             ),
           ),
+          Container(
+            width: 210,
+            padding: const EdgeInsets.all(OSpacing.s),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(OCornerRadius.s),
+                bottomRight: Radius.circular(OCornerRadius.s),
+              ),
+              border: Border.all(color: OColor.gray200, width: 1),
+              color: _isPressed ? OColor.gray200 : OColor.white,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                OText(
+                  text: "Event Title",
+                  style: OTextStyle.bodyMedium.copyWith(
+                    color: widget.isDisabled ? OColor.gray600 : OColor.gray800,
+                  ),
+                ),
+                const SizedBox(width: OSpacing.xs),
+                OText(
+                  text: "Date," + " " + "Start time -" + " " + "End time",
+                  style: OTextStyle.bodySmall.copyWith(
+                    color: widget.isDisabled ? OColor.gray400 : OColor.gray600,
+                  ),
+                ),
+                const SizedBox(width: OSpacing.xxs),
+                OText(
+                  text: "Location",
+                  style: OTextStyle.bodySmall.copyWith(
+                    color: widget.isDisabled ? OColor.gray400 : OColor.gray600,
+                  ),
+                ),
+                const SizedBox(width: OSpacing.xs),
+                if (_isSaved == true)
+                  Row(
+                    children: [
+                      Icon(
+                        TablerIcons.check,
+                        size: 16,
+                        color:
+                            widget.isDisabled
+                                ? OColor.gray400
+                                : OColor.green600,
+                      ),
+                      const SizedBox(width: OSpacing.xxs),
+                      OText(
+                        text: "Going",
+                        style: OTextStyle.labelXSmall.copyWith(
+                          color:
+                              widget.isDisabled
+                                  ? OColor.gray400
+                                  : OColor.green600,
+                        ),
+                      ),
+                    ],
+                  ),
+                if (_isSaved != true)
+                  Row(children: [const SizedBox(width: OSpacing.m),
+                    OText(
+                      text: "+ 350 Others",
+                      style: OTextStyle.labelXSmall.copyWith(
+                        color:
+                        widget.isDisabled
+                            ? OColor.gray400
+                            : OColor.blue600,
+                      ),
+                    ),]),
+              ],
+            ),
+          ),
         ],
       );
     }
@@ -271,7 +359,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
         Text(
           widget.title,
           style: TextStyle(
-            fontSize: 18 ,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
             color: widget.isDisabled ? Colors.grey : Colors.black,
           ),
@@ -284,7 +372,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
             color: widget.isDisabled ? Colors.grey : Colors.black54,
           ),
         ),
-       if (widget.size == EventCardSize.large) ...[
+        if (widget.size == EventCardSize.large) ...[
           const SizedBox(height: 8),
           _buildTypeSpecificContent(),
         ],
