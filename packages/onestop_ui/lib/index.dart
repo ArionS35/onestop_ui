@@ -36,6 +36,7 @@ export 'indicators/badge.dart';
 export 'indicators/banners.dart';
 export 'indicators/profile.dart';
 export 'indicators/progress.dart';
+export 'indicators/snackbar.dart';
 export 'indicators/tag.dart';
 
 //list tiles
