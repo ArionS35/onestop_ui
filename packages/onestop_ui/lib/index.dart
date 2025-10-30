@@ -37,9 +37,12 @@ export 'indicators/banners.dart';
 export 'indicators/profile.dart';
 export 'indicators/progress.dart';
 export 'indicators/tag.dart';
+export 'widget_demo/indicators_demo.dart';
+export 'widget_demo/buttons_demo.dart';
 
 //list tiles
 export 'list/list_export.dart';
+export 'widget_demo/list_demo.dart';
 export 'store/theme_store.dart';
 
 // modals
@@ -51,7 +54,7 @@ export 'components/modals/basic_modal.dart';
 export 'widget_demo/modal_demo.dart';
 
 //images
-import 'package:onestop_ui/components/images/image_gallery.dart';
-import 'package:onestop_ui/components/images/image_preview.dart';
-import 'package:onestop_ui/components/images/image_selector.dart';
+export 'components/images/image_gallery.dart';
+export 'components/images/image_preview.dart';
+export 'components/images/image_selector.dart';
 export 'widget_demo/image_demo.dart';
