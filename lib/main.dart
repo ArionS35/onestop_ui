@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:onestop_ui/index.dart';
-import 'package:onestop_ui/widget_demo/indicators_demo.dart';
-import 'package:onestop_ui/widget_demo/buttons_demo.dart';
-import 'package:onestop_ui/widget_demo/list_demo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,10 +34,13 @@ class _MyAppState extends State<MyApp> {
   void _onThemeChanged() {
     setState(() {});
   }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final List<String> demoImages = [
+      'https://picsum.photos/400/200?image=1',
+      'https://picsum.photos/400/200?image=2',
+      'https://picsum.photos/400/200?image=3',
+    ];
     return MaterialApp(
       title: 'OneStop UI Demo',
       debugShowCheckedModeBanner: false,
@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: themeStore.backgroundColor,
         appBar: AppBar(
-          title: Text('OneStop UI Demo'),
+          title: OText(text: 'OneStop UI Demo', style: OTextStyle.headingLarge),
           backgroundColor: themeStore.surfaceColor,
           foregroundColor: themeStore.textColor,
           actions: [
@@ -82,6 +82,8 @@ class _MyAppState extends State<MyApp> {
                     OText(text: 'Welcome to OneStop UI', style: OTextStyle.headingLarge),
                     OText(text: 'This is a sample text', style: OTextStyle.bodyMedium),
                     OText(text: 'Enjoy building your app!', style: OTextStyle.bodySmall),
+                    ImageDemo(),
+                    Divider(),
                     const SizedBox(height: 20),
                     ModalDemo(),
                     const SizedBox(height: 20),
