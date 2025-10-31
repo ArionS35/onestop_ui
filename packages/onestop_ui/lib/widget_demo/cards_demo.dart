@@ -32,7 +32,7 @@ class CardsDemo extends StatelessWidget {
             title: "Sports Day",
             date: "Oct 15, 2025",
             size: EventCardSize.large,
-            isDisabled: true,
+            isDisabled: false,
           ),
           OEventListingCard.pastUser(
             title: "Sports Day",

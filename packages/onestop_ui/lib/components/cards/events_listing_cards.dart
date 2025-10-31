@@ -130,10 +130,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
     // Build content based on size - larger cards show more info
     if (widget.size == EventCardSize.small) {
       return Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: OSpacing.xs,
-          vertical: OSpacing.xs,
-        ),
+        padding: const EdgeInsets.all(OSpacing.s),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,6 +163,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
                             widget.isDisabled ? OColor.gray600 : OColor.gray800,
                       ),
                     ),
+                    if (_isSaved == true) const SizedBox(width: OSpacing.xxs),
                     if (_isSaved == true)
                       Row(
                         children: [
@@ -336,47 +334,229 @@ class _OEventListingCardState extends State<OEventListingCard> {
                     ],
                   ),
                 if (_isSaved != true)
-                  Row(children: [const SizedBox(width: OSpacing.m),
-                    OText(
-                      text: "+ 350 Others",
-                      style: OTextStyle.labelXSmall.copyWith(
-                        color:
-                        widget.isDisabled
-                            ? OColor.gray400
-                            : OColor.blue600,
+                  Row(
+                    children: [
+                      const SizedBox(width: OSpacing.m),
+                      OText(
+                        text: "+ 350 Others",
+                        style: OTextStyle.labelXSmall.copyWith(
+                          color:
+                              widget.isDisabled
+                                  ? OColor.gray400
+                                  : OColor.blue600,
+                        ),
                       ),
-                    ),]),
+                    ],
+                  ),
               ],
             ),
           ),
         ],
       );
     }
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          widget.title,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: widget.isDisabled ? Colors.grey : Colors.black,
+    return Padding(
+      padding: const EdgeInsets.all(OSpacing.s),
+      child: Column(
+        children: [
+          Container(
+            height: 187.53,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(OCornerRadius.s)),
+              color: OColor.gray400,
+              image: DecorationImage(
+                image: NetworkImage(
+                  "https://variety.com/wp-content/uploads/2019/10/shutterstock_editorial_10435445et.jpg?w=1000&h=667&crop=1",
+                ),
+                fit: BoxFit.cover,
+                opacity: 1,
+              ),
+            ),
           ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          widget.date,
-          style: TextStyle(
-            fontSize: widget.size == EventCardSize.small ? 12 : 14,
-            color: widget.isDisabled ? Colors.grey : Colors.black54,
+          const SizedBox(height: OSpacing.s),
+          Row(
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    TablerIcons.heart_plus,
+                    size: 16,
+                    color: widget.isDisabled ? OColor.gray400 : OColor.blue500,
+                  ),
+                  const SizedBox(width: OSpacing.xxs),
+                  OText(
+                    text: "350",
+                    style: OTextStyle.labelXSmall.copyWith(
+                      color:
+                          widget.isDisabled ? OColor.gray400 : OColor.blue500,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(width: OSpacing.s),
+              Row(
+                children: [
+                  Icon(
+                    TablerIcons.eye,
+                    size: 16,
+                    color: widget.isDisabled ? OColor.gray400 : OColor.blue500,
+                  ),
+                  const SizedBox(width: OSpacing.xxs),
+                  OText(
+                    text: "800",
+                    style: OTextStyle.labelXSmall.copyWith(
+                      color:
+                          widget.isDisabled ? OColor.gray400 : OColor.blue500,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(width: OSpacing.s),
+              Row(
+                children: [
+                  Icon(
+                    TablerIcons.message_heart,
+                    size: 16,
+                    color: widget.isDisabled ? OColor.gray400 : OColor.blue500,
+                  ),
+                  const SizedBox(width: OSpacing.xxs),
+                  OText(
+                    text: "350",
+                    style: OTextStyle.labelXSmall.copyWith(
+                      color:
+                          widget.isDisabled ? OColor.gray400 : OColor.blue500,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ),
-        if (widget.size == EventCardSize.large) ...[
-          const SizedBox(height: 8),
+          const SizedBox(height: OSpacing.s),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              OText(
+                text: "Event Title",
+                style: OTextStyle.headingSmall.copyWith(
+                  color: widget.isDisabled ? OColor.gray600 : OColor.gray800,
+                ),
+              ),
+              Icon(
+                TablerIcons.chevron_right,
+                color: widget.isDisabled ? OColor.gray400 : OColor.gray600,
+                size: 24,
+              ),
+            ],
+          ),
+          const SizedBox(height: OSpacing.s),
+          Row(
+            children: [
+              Container(
+                width: 46,
+                height: 24,
+                decoration: BoxDecoration(
+                  color: OColor.gray100,
+                  borderRadius: BorderRadius.circular(OCornerRadius.xl),
+                ),
+                child: Center(
+                  child: OText(
+                    text: "TAg1",
+                    style: OTextStyle.labelXSmall.copyWith(
+                      color:
+                          widget.isDisabled ? OColor.gray400 : OColor.blue600,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: OSpacing.m),
+              Container(
+                width: 46,
+                height: 24,
+                decoration: BoxDecoration(
+                  color: OColor.gray100,
+                  borderRadius: BorderRadius.circular(OCornerRadius.xl),
+                ),
+                child: Center(
+                  child: OText(
+                    text: "TAg2",
+                    style: OTextStyle.labelXSmall.copyWith(
+                      color:
+                          widget.isDisabled ? OColor.gray400 : OColor.green600,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: OSpacing.s),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    TablerIcons.map_pin,
+                    color: widget.isDisabled ? OColor.gray400 : OColor.gray600,
+                    size: 16,
+                  ),
+                  const SizedBox(width: OSpacing.xxs),
+                  OText(
+                    text: "Location",
+                    style: OTextStyle.labelSmall.copyWith(
+                      color:
+                          widget.isDisabled ? OColor.gray400 : OColor.gray600,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: OSpacing.xxs),
+              Row(
+                children: [
+                  Icon(
+                    TablerIcons.calendar,
+                    color: widget.isDisabled ? OColor.gray400 : OColor.gray600,
+                    size: 16,
+                  ),
+                  const SizedBox(width: OSpacing.xxs),
+                  OText(
+                    text: "Date," + " " + "Start time -" + " " + "End time",
+                    style: OTextStyle.labelSmall.copyWith(
+                      color:
+                          widget.isDisabled ? OColor.gray400 : OColor.gray600,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: OSpacing.s),
+          Row(
+            children: [
+              Container(
+                width: 24,
+                height: 24,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(OCornerRadius.xl),
+                  color: OColor.gray400,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      "https://variety.com/wp-content/uploads/2019/10/shutterstock_editorial_10435445et.jpg?w=1000&h=667&crop=1",
+                    ),
+                    fit: BoxFit.cover,
+                    opacity: 1,
+                  ),
+                ),
+              ),
+              const SizedBox(width: OSpacing.xs),
+              OText(
+                text: "Student's Web Committee",
+                style: OTextStyle.labelSmall.copyWith(
+                  color: widget.isDisabled ? OColor.gray600 : OColor.gray600,
+                ),
+              ),
+            ],
+          ),
           _buildTypeSpecificContent(),
         ],
-      ],
+      ),
     );
   }
 
@@ -389,27 +569,106 @@ class _OEventListingCardState extends State<OEventListingCard> {
           Text("Register Now"),
         ],
       ),
-      EventCardType.pastUser => Row(
+      EventCardType.pastUser => Column(
         children: [
-          Icon(TablerIcons.arrow_rotary_first_left, size: 16),
-          const SizedBox(width: 4),
-          Text("View Details"),
+          const SizedBox(height: OSpacing.s),
+          Divider(color: OColor.gray200),
+          const SizedBox(height: OSpacing.s),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(width: OSpacing.m),
+              OText(
+                text: "+ 350 Others",
+                style: OTextStyle.labelXSmall.copyWith(
+                  color: widget.isDisabled ? OColor.gray400 : OColor.blue600,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: OSpacing.xs,
+                  horizontal: OSpacing.s,
+                ),
+                decoration: BoxDecoration(
+                  color: widget.isDisabled ? OColor.white : OColor.green600,
+                  border: Border.all(
+                    color:
+                        widget.isDisabled ? OColor.gray400 : Colors.transparent,
+                  ),
+                  borderRadius: BorderRadius.circular(OCornerRadius.l),
+                ),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {},
+                  child: Center(
+                    child: Row(
+                      children: [
+                        Icon(
+                          TablerIcons.heart,
+                          color:
+                              widget.isDisabled ? OColor.gray400 : OColor.white,
+                          size: 16,
+                        ),
+                        const SizedBox(width: OSpacing.xs),
+                        OText(
+                          text: "I'm Going",
+                          style: OTextStyle.labelSmall.copyWith(
+                            color:
+                                widget.isDisabled
+                                    ? OColor.gray400
+                                    : OColor.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
-      EventCardType.upcomingAdmin => Row(
+      EventCardType.upcomingAdmin => Column(
         children: [
-          Icon(TablerIcons.arrow_rotary_first_left, size: 16),
-          const SizedBox(width: 4),
-          Text("Manage Event"),
+          const SizedBox(height: OSpacing.xs),
+          Divider(color: OColor.gray200),
+          const SizedBox(height: OSpacing.xs),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton.icon(
+                onPressed: () {}, //widget.edit,
+                icon: Icon(
+                  TablerIcons.edit,
+                  size: 16,
+                  color: widget.isDisabled ? OColor.gray400 : OColor.green600,
+                ),
+                label: OText(
+                  text: "Edit",
+                  style: OTextStyle.labelSmall.copyWith(
+                    color: widget.isDisabled ? OColor.gray400 : OColor.green600,
+                  ),
+                ),
+              ),
+              TextButton.icon(
+                onPressed: () {}, // widget.delete,
+                icon: Icon(
+                  TablerIcons.trash,
+                  size: 16,
+                  color: widget.isDisabled ? OColor.gray400 : OColor.red500,
+                ),
+                label: OText(
+                  text: "Delete",
+                  style: OTextStyle.labelSmall.copyWith(
+                    color: widget.isDisabled ? OColor.gray400 : OColor.red500,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
-      EventCardType.pastAdmin => Row(
-        children: [
-          Icon(TablerIcons.arrow_rotary_first_left, size: 16),
-          const SizedBox(width: 4),
-          Text("View Analytics"),
-        ],
-      ),
+      EventCardType.pastAdmin => Row(children: []),
     };
   }
 }
