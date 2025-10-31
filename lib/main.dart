@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onestop_ui/components/ListButtons/ToggleButton.dart';
 import 'package:onestop_ui/index.dart';
 
 void main() async {
@@ -82,6 +83,9 @@ class _MyAppState extends State<MyApp> {
                     OText(text: 'Welcome to OneStop UI', style: OTextStyle.headingLarge),
                     OText(text: 'This is a sample text', style: OTextStyle.bodyMedium),
                     OText(text: 'Enjoy building your app!', style: OTextStyle.bodySmall),
+                    const SizedBox(height: 20),
+                    ListDemo(),
+                    ToggleDemo(),
                     ImageDemo(),
                     Divider(),
                     const SizedBox(height: 20),
@@ -105,7 +109,6 @@ class _MyAppState extends State<MyApp> {
                     const SizedBox(height: 10),
                     Text("List Demo", style: TextStyle(fontSize: 25, color: themeStore.textColor)),
                     SizedBox(height: 25),
-                    ListDemo(),
                   ],
                 ),
               ),
