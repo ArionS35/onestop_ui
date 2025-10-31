@@ -163,7 +163,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
                             widget.isDisabled ? OColor.gray600 : OColor.gray800,
                       ),
                     ),
-                    if (_isSaved == true) const SizedBox(width: OSpacing.xxs),
+                    if (_isSaved == true) const SizedBox(height: OSpacing.xxs),
                     if (_isSaved == true)
                       Row(
                         children: [
@@ -187,6 +187,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
                           ),
                         ],
                       ),
+                    const SizedBox(height: OSpacing.xxs),
                     OText(
                       text: "Time," + "Location",
                       style: OTextStyle.bodySmall.copyWith(
@@ -194,6 +195,7 @@ class _OEventListingCardState extends State<OEventListingCard> {
                             widget.isDisabled ? OColor.gray400 : OColor.gray600,
                       ),
                     ),
+                    const SizedBox(height: OSpacing.xs),
                     Row(
                       children: [
                         Container(
@@ -564,9 +566,6 @@ class _OEventListingCardState extends State<OEventListingCard> {
     return switch (widget.type) {
       EventCardType.upcomingUser => Row(
         children: [
-          Icon(TablerIcons.arrow_rotary_first_left, size: 16),
-          const SizedBox(width: 4),
-          Text("Register Now"),
         ],
       ),
       EventCardType.pastUser => Column(
@@ -670,5 +669,10 @@ class _OEventListingCardState extends State<OEventListingCard> {
       ),
       EventCardType.pastAdmin => Row(children: []),
     };
+  }
+
+  @ override
+  void dispose(){
+    super.dispose();
   }
 }
