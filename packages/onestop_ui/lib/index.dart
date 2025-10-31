@@ -53,6 +53,9 @@ export 'components/modalcomponents/modal_banner.dart';
 export 'components/modals/food_outlet_modal.dart';
 export 'components/modals/basic_modal.dart';
 export 'widget_demo/modal_demo.dart';
+// date, time
+export 'widget_demo/dates.dart';
+export 'widget_demo/time.dart';
 
 //images
 export 'components/images/image_gallery.dart';
