@@ -10,6 +10,109 @@ class CardsDemo extends StatelessWidget {
     return SizedBox(
       child: Column(
         children: [
+          OEventCardCompact(
+            isEnabled: true,
+            isFeedbackOn: true,
+            title: 'Card header',
+            subText: 'Sub-text',
+            tag1: "TAG 1",
+            tag2: "TAG 2",
+            savedTime: '30 min',
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventCardCompact(
+            isEnabled: false,
+            isFeedbackOn: false,
+            title: 'Card Header',
+            subText: 'Sub-text',
+            tag1: "TAG 1",
+            tag2: "TAG 2",
+            savedTime: '30 min',
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.pastAdmin(
+            title: "Flutter Workshop",
+            date: "Nov 1, 2025",
+            size: EventCardSize.large,
+            onTap: () {},
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.pastAdmin(
+            title: "Flutter Workshop",
+            date: "Nov 1, 2025",
+            size: EventCardSize.medium,
+            isDisabled: true,
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.pastAdmin(
+            title: "Flutter Workshop",
+            date: "Nov 1, 2025",
+            size: EventCardSize.small,
+            onTap: () => {},
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.pastUser(
+            title: "Sports Day",
+            date: "Oct 15, 2025",
+            size: EventCardSize.large,
+            isDisabled: false,
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.pastUser(
+            title: "Sports Day",
+            date: "Oct 15, 2025",
+            size: EventCardSize.medium,
+            onTap: () {},
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.pastUser(
+            title: "Sports Day",
+            date: "Oct 15, 2025",
+            size: EventCardSize.small,
+            onTap: () {},
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.upcomingAdmin(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.large,
+            isDisabled: true,
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.upcomingAdmin(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.medium,
+            onTap: () {},
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.upcomingAdmin(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.small,
+            onTap: () {},
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.upcomingUser(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.large,
+            onTap: () {},
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.upcomingUser(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.medium,
+            isDisabled: true,
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventListingCard.upcomingUser(
+            title: "Orientation",
+            date: "Dec 5, 2025",
+            size: EventCardSize.small,
+            onTap: () {},
+          ),
           OHomeCardLarge(
             dataMap: {
               // this is the map of data which has to be mapped into the blocks of main home card
@@ -44,7 +147,7 @@ class CardsDemo extends StatelessWidget {
             message:
                 () {}, // triggers the message button when editing mode is off
             phone: () {}, // triggers the phone button when editing mode is off
-             userImageURl: // Image of user who posted the ad
+            userImageURl: // Image of user who posted the ad
                 "https://variety.com/wp-content/uploads/2019/10/shutterstock_editorial_10435445et.jpg?w=1000&h=667&crop=1",
             userName: "John Doe",
             onArrowPressed: () {},
