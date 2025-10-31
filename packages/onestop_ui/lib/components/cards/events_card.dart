@@ -237,37 +237,51 @@ class _OEventCardState extends State<OEventCard> {
 
 class OEventCardCompact extends StatefulWidget {
   final bool isEnabled;
+  final bool isFeedbackOn;
+  final String title;
+  final String subText;
+  final String? tag1;
+  final String? tag2;
+  final String savedTime;
 
-  const OEventCardCompact({super.key, required this.isEnabled});
+  const OEventCardCompact({
+    super.key,
+    required this.isEnabled,
+    required this.isFeedbackOn,
+    required this.title,
+    required this.subText,
+    this.tag1,
+    this.tag2,
+    required this.savedTime,
+  });
 
   @override
   State<OEventCardCompact> createState() => _OEventCardCompactState();
 }
 
 class _OEventCardCompactState extends State<OEventCardCompact> {
+  bool isPressed = false;
+
   @override
   Widget build(BuildContext context) {
-    bool _isPressed = false;
-    var _isSaved= true;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTapDown:
           (_) =>
               widget.isEnabled
-                  ? setState(() => _isPressed = true)
+                  ? setState(() => isPressed = true)
                   : null, //engage behaviour when card is tapped
       onTapUp: (_) {
-        setState(() => _isPressed = false);
+        setState(() => isPressed = false);
       },
       child: Container(
         padding: const EdgeInsets.all(OSpacing.s),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(OCornerRadius.l),
           border: Border.all(color: OColor.gray200, width: 1),
-          color: _isPressed ? OColor.gray200 : OColor.white,
+          color: isPressed ? OColor.gray200 : OColor.white,
         ),
-        child:
-        Column(
+        child: Column(
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -297,18 +311,16 @@ class _OEventCardCompactState extends State<OEventCardCompact> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         OText(
-                          text: "Event Title",
+                          text: widget.title,
                           style: OTextStyle.bodyMedium.copyWith(
-                            color:
-                            widget.isEnabled ? OColor.gray800 : OColor.gray600,
+                            color: OColor.gray800,
                           ),
                         ),
                         const SizedBox(height: OSpacing.xxs),
                         OText(
-                          text: "Sub-Text",
+                          text: widget.subText,
                           style: OTextStyle.bodyMedium.copyWith(
-                            color:
-                            widget.isEnabled ? OColor.gray600 : OColor.gray400,
+                            color: OColor.gray600,
                           ),
                         ),
                         const SizedBox(height: OSpacing.xs),
@@ -325,12 +337,9 @@ class _OEventCardCompactState extends State<OEventCardCompact> {
                               ),
                               child: Center(
                                 child: OText(
-                                  text: "TAg1",
+                                  text: widget.tag1?.toUpperCase(),
                                   style: OTextStyle.labelXSmall.copyWith(
-                                    color:
-                                    widget.isEnabled
-                                        ? OColor.blue600
-                                        : OColor.gray400,
+                                    color: OColor.blue600,
                                   ),
                                 ),
                               ),
@@ -347,12 +356,9 @@ class _OEventCardCompactState extends State<OEventCardCompact> {
                               ),
                               child: Center(
                                 child: OText(
-                                  text: "TAg2",
+                                  text: widget.tag2?.toUpperCase(),
                                   style: OTextStyle.labelXSmall.copyWith(
-                                    color:
-                                    widget.isEnabled
-                                        ? OColor.green600
-                                        : OColor.gray400,
+                                    color: OColor.green600,
                                   ),
                                 ),
                               ),
@@ -360,25 +366,18 @@ class _OEventCardCompactState extends State<OEventCardCompact> {
                           ],
                         ),
                         const SizedBox(height: OSpacing.m),
-                        if (_isSaved= true == true)
                           Row(
                             children: [
                               Icon(
                                 TablerIcons.file,
                                 size: 16,
-                                color:
-                                widget.isEnabled
-                                    ? OColor.green600
-                                    : OColor.gray400,
+                                color: OColor.green600,
                               ),
                               const SizedBox(width: OSpacing.xxs),
                               OText(
-                                text: "Saved"+"30 min Ago",
+                                text: "Saved ${widget.savedTime} ago",
                                 style: OTextStyle.labelXSmall.copyWith(
-                                  color:
-                                  widget.isEnabled
-                                      ? OColor.green600
-                                      : OColor.gray400,
+                                  color: OColor.green600,
                                 ),
                               ),
                             ],
@@ -394,6 +393,61 @@ class _OEventCardCompactState extends State<OEventCardCompact> {
                 ),
               ],
             ),
+            if (widget.isFeedbackOn == true) const SizedBox(height: OSpacing.l),
+            if (widget.isFeedbackOn == true)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  OText(
+                    text: "Enjoyed the event?",
+                    style: OTextStyle.labelXSmall.copyWith(
+                      color:
+                          widget.isEnabled ? OColor.gray800 : OColor.green600,
+                    ),
+                  ),
+                  const SizedBox(height: OSpacing.xs),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: OSpacing.xs,
+                      horizontal: OSpacing.s,
+                    ),
+                    decoration: BoxDecoration(
+                      color: OColor.white,
+                      border: Border.all(color: OColor.gray400),
+                      borderRadius: BorderRadius.circular(OCornerRadius.l),
+                    ),
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {},
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OText(
+                              text: "Submit a Feedback",
+                              style: OTextStyle.labelSmall.copyWith(
+                                color:
+                                    widget.isEnabled
+                                        ? OColor.green600
+                                        : OColor.gray400,
+                              ),
+                            ),
+                            const SizedBox(width: OSpacing.xs),
+                            Icon(
+                              TablerIcons.message_heart,
+                              color:
+                                  widget.isEnabled
+                                      ? OColor.green600
+                                      : OColor.gray400,
+                              size: 16,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
           ],
         ),
       ),

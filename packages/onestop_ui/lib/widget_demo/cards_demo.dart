@@ -10,8 +10,26 @@ class CardsDemo extends StatelessWidget {
     return SizedBox(
       child: Column(
         children: [
-          OEventCardCompact(isEnabled: true),
-          OEventCardCompact(isEnabled: false),
+          OEventCardCompact(
+            isEnabled: true,
+            isFeedbackOn: true,
+            title: 'Card header',
+            subText: 'Sub-text',
+            tag1: "TAG 1",
+            tag2: "TAG 2",
+            savedTime: '30 min',
+          ),
+          const SizedBox(height: OSpacing.s),
+          OEventCardCompact(
+            isEnabled: false,
+            isFeedbackOn: false,
+            title: 'Card Header',
+            subText: 'Sub-text',
+            tag1: "TAG 1",
+            tag2: "TAG 2",
+            savedTime: '30 min',
+          ),
+          const SizedBox(height: OSpacing.s),
           OEventListingCard.pastAdmin(
             title: "Flutter Workshop",
             date: "Nov 1, 2025",
